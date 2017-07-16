@@ -9,4 +9,4 @@ javascript:
 	for (var i = closedComment.length - 1; i>=0; i--) {
 		closedComment[i].classList.remove('outdated-comment');
 	};
-});
+})();
