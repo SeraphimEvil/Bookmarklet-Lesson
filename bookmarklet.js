@@ -1,7 +1,7 @@
-'use strict';
-
 javascript:
 (function() {
+	'use strict';
+
 	var closedComment = document.querySelectorAll('.js-comment-container.outdated-comment');
 	const studentName = 'SeraphimEvil';
 	const mentorName = 'lizzzzzy';
