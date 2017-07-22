@@ -3,17 +3,17 @@ javascript:
   'use strict';
 
   const STUDENT_NAME = 'SeraphimEvil';
-  // const MENTOR_NAME = 'aalexeev239';
-  const MENTOR_NAME = 'lizzzzzy';
+  const MENTOR_NAME = 'aalexeev239';
+  // const MENTOR_NAME = 'lizzzzzy';
 
   let allComment = document.querySelectorAll('.js-comment-container'); // ищем все комментарии, получаем NodeList...  
 
   let allCommentArr = Array.prototype.slice.call(allComment); // приводим NodeList к Array
 
-  console.log(allCommentArr);
+  console.log(allCommentArr); // проверяю что тут лежит массив
 
   for (let i = 0; i < allCommentArr.length; i++) {
-    console.log(i);
+    allCommentArr[i].classList.remove('outdated-comment'); // открываем все свернутые комментарии
   }
 
   // for (let i = closedComment.length - 1; i>=0; i--) {
