@@ -14,6 +14,7 @@ javascript:
 
   for (let i = 0; i < allCommentArr.length; i++) {
     console.log(i);
+    
   }
 
   // for (let i = closedComment.length - 1; i>=0; i--) {
