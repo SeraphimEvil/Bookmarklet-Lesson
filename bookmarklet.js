@@ -1,22 +1,28 @@
 javascript:
 (function() {
-	'use strict';
+  'use strict';
 
-	var closedComment = document.querySelectorAll('.js-comment-container.outdated-comment');
-	const studentName = 'SeraphimEvil';
-	const mentorName = 'lizzzzzy';
+  const STUDENT_NAME = 'SeraphimEvil';
+  // const MENTOR_NAME = 'aalexeev239';
+  const MENTOR_NAME = 'lizzzzzy';
 
-	for (var i = closedComment.length - 1; i>=0; i--) {
-		var commentAuthor = document.querySelector('.review-comment a.author').innerHTML;
+  let allComment = document.querySelectorAll('.js-comment-container'); // ищем все комментарии, получаем NodeList...  
 
-		closedComment[i].classList.remove('outdated-comment');
+  let allCommentArr = Array.prototype.slice.call(allComment); // приводим NodeList к Array
 
-		if (commentAuthor == studentName) {
-			console.log('Комментарий студента');
-		} else if (commentAuthor == mentorName) {
-			console.log('Комментарий наставника')
-		} else {
-			console.log('Нет комментария')
-		}
-	};
+  console.log(allCommentArr);
+
+  for (let i = 0; i < allCommentArr.length; i++) {
+    console.log(i);
+  }
+
+  // for (let i = closedComment.length - 1; i>=0; i--) {
+  //   closedComment[i].classList.remove('outdated-comment'); // открываем все свернутые комментарии
+
+  //   let commentAuthors = document.querySelectorAll('.review-comment a.author'); // смотрим внутри комментария кто автор
+
+  //   for (var key in commentAuthors) {
+  //     console.log(commentAuthors[key]);
+  //   };
+  // };
 })();
