@@ -10,7 +10,7 @@ javascript:
 
   const COMMENT_CONTAINERS_LIST = Array.prototype.slice.call(COMMENT_CONTAINERS); // приводим NodeList к Array
 
-  let CLOSED_COMMENT_CONTAINERS_LIST = []; // массив, в котором будем хранить список закрытых комментариев
+  const CLOSED_COMMENT_CONTAINERS_LIST = []; // массив, в котором будем хранить список закрытых комментариев
 
   // цикл в котором помещаем все элементы с классом закрытого комментария в отдельный массив
   for (let i = 0; i < COMMENT_CONTAINERS_LIST.length; i++) {
