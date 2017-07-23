@@ -3,9 +3,8 @@ javascript:
   'use strict';
 
   const STUDENT_NAME = 'SeraphimEvil';
-  // const MENTOR_NAME = 'aalexeev239';
-  const MENTOR_NAME = 'lizzzzzy';
-  
+  const MENTOR_NAME = 'aalexeev239';
+  // const MENTOR_NAME = 'lizzzzzy';
 
   const COMMENT_CONTAINERS = document.querySelectorAll('.js-comment-container'); // ищем все комментарии, получаем NodeList...  
 
