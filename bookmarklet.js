@@ -3,26 +3,25 @@ javascript:
   'use strict';
 
   const STUDENT_NAME = 'SeraphimEvil';
-  const MENTOR_NAME = 'aalexeev239';
-  // const MENTOR_NAME = 'lizzzzzy';
+  // const MENTOR_NAME = 'aalexeev239';
+  const MENTOR_NAME = 'lizzzzzy';
+  
 
-  let allComment = document.querySelectorAll('.js-comment-container'); // ищем все комментарии, получаем NodeList...  
+  const COMMENT_CONTAINERS = document.querySelectorAll('.js-comment-container'); // ищем все комментарии, получаем NodeList...  
 
-  let allCommentArr = Array.prototype.slice.call(allComment); // приводим NodeList к Array
+  const COMMENT_CONTAINERS_LIST = Array.prototype.slice.call(COMMENT_CONTAINERS); // приводим NodeList к Array
 
-  console.log(allCommentArr); // проверяю что тут лежит массив
+  let CLOSED_COMMENT_CONTAINERS_LIST = []; // массив, в котором будем хранить список закрытых комментариев
 
-  for (let i = 0; i < allCommentArr.length; i++) {
-    allCommentArr[i].classList.remove('outdated-comment'); // открываем все свернутые комментарии
-  }
+  // цикл в котором помещаем все элементы с классом закрытого комментария в отдельный массив
+  for (let i = 0; i < COMMENT_CONTAINERS_LIST.length; i++) {
+    if (COMMENT_CONTAINERS_LIST[i].classList.contains('outdated-comment')) {
+      CLOSED_COMMENT_CONTAINERS_LIST.push(COMMENT_CONTAINERS_LIST[i]);
+    }
+  };
 
-  // for (let i = closedComment.length - 1; i>=0; i--) {
-  //   closedComment[i].classList.remove('outdated-comment'); // открываем все свернутые комментарии
-
-  //   let commentAuthors = document.querySelectorAll('.review-comment a.author'); // смотрим внутри комментария кто автор
-
-  //   for (var key in commentAuthors) {
-  //     console.log(commentAuthors[key]);
-  //   };
-  // };
+  // открываем все закрытые комментарии
+  for (let i = 0; i < CLOSED_COMMENT_CONTAINERS_LIST.length; i++) {
+    CLOSED_COMMENT_CONTAINERS_LIST[i].classList.remove('outdated-comment'); 
+  };
 })();
