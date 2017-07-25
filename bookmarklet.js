@@ -15,18 +15,10 @@ javascript:
 
   const reactedCommentsList = commentContainersList 
     .filter(function(element) {
-      // console.log(element.lastElementChild.querySelector('.review-comment:last-child .comment-reactions-options button'));
       let reactComment = element.lastElementChild.querySelector('.review-comment:last-child .comment-reactions-options button');
       return reactComment;
     })
     .forEach(function(element) {
-      console.log(element.lastElementChild.querySelector('.review-comment:last-child .comment-reactions-options button'))
-      console.log(element.lastElementChild)
       element.lastElementChild.querySelector('.review-comment:last-child').style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
     });
-
-  // console.log(reactedCommentsList);
-
-  
-
 })();
