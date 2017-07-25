@@ -4,6 +4,7 @@ javascript:
 
   const STUDENT_NAME = 'SeraphimEvil';
   const MENTOR_NAME = 'aalexeev239';
+  const HOORAY_REACTION = 'HOORAY';
 
   const commentContainers = document.querySelectorAll('.js-comment-container'); // ищем все комментарии, получаем NodeList...  
 
@@ -19,6 +20,14 @@ javascript:
       return reactComment;
     })
     .forEach(function(element) {
-      element.lastElementChild.querySelector('.review-comment:last-child').style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+      let btnReaction = element.lastElementChild.querySelector('.review-comment:last-child .comment-reactions-options button:last-child');
+      let checkMentor = btnReaction.getAttribute('aria-label');
+      let checkReaction = btnReaction.getAttribute('value');
+
+      if (checkReaction.indexOf(HOORAY_REACTION) >= 0 && checkMentor.indexOf(MENTOR_NAME) >= 0) {
+        return false;
+      } else {
+        element.lastElementChild.querySelector('.review-comment:last-child').style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+      }
     });
 })();
