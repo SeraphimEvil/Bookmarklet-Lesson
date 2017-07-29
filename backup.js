@@ -15,7 +15,7 @@ javascript:
       const lastCommentBlock = lastCommentContainer.querySelector('.js-comments-holder');
       const lastComment = lastCommentBlock.lastElementChild;
       const hoorayEmotionElement = lastComment.querySelector('.js-reactions-container g-emoji[alias="tada"]');
-      
+
       if (!hoorayEmotionElement) {
         return true;
       };
@@ -24,7 +24,7 @@ javascript:
       const btnElementLabel = hoorayBtnElement.getAttribute('aria-label');
 
       return btnElementLabel.indexOf(MENTOR_NAME) === -1;
-    }
+    };
   };
 
 
