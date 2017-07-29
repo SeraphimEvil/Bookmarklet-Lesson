@@ -54,7 +54,7 @@ javascript:
   commentToCheckBlock.style.boxSizing = 'border-box';
   commentToCheckBlock.style.padding = '10px';
 
-  let pageBody = document.body;
+  const pageBody = document.body;
   pageBody.appendChild(commentToCheckBlock);
 
   const chekBlockTitle = document.createElement('h2');
