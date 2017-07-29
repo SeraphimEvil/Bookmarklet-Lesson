@@ -40,7 +40,7 @@ javascript:
     checkBlockLink.setAttribute('href', '#' + index);
   }
 
-  const commentToCheckBlock = document.createElement('div');
+  let commentToCheckBlock = document.createElement('div');
   commentToCheckBlock.classList.add('check-list');
   commentToCheckBlock.style.position = 'fixed';
   commentToCheckBlock.style.width = '300px';
@@ -54,7 +54,7 @@ javascript:
   commentToCheckBlock.style.boxSizing = 'border-box';
   commentToCheckBlock.style.padding = '10px';
 
-  const pageBody = document.body;
+  let pageBody = document.body;
   pageBody.appendChild(commentToCheckBlock);
 
   const chekBlockTitle = document.createElement('h2');
