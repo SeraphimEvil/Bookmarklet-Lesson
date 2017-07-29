@@ -31,8 +31,8 @@ javascript:
     element.id = index;
     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
 
-    let checkBlockItem = document.createElement('li');
-    let checkBlockLink = document.createElement('a');
+    const checkBlockItem = document.createElement('li');
+    const checkBlockLink = document.createElement('a');
 
     checkBlockList.appendChild(checkBlockItem);
     checkBlockItem.appendChild(checkBlockLink);
@@ -40,7 +40,7 @@ javascript:
     checkBlockLink.setAttribute('href', '#' + index);
   }
 
-  let commentToCheckBlock = document.createElement('div');
+  const commentToCheckBlock = document.createElement('div');
   commentToCheckBlock.classList.add('check-list');
   commentToCheckBlock.style.position = 'fixed';
   commentToCheckBlock.style.width = '300px';
@@ -54,7 +54,7 @@ javascript:
   commentToCheckBlock.style.boxSizing = 'border-box';
   commentToCheckBlock.style.padding = '10px';
 
-  let pageBody = document.body;
+  const pageBody = document.body;
   pageBody.appendChild(commentToCheckBlock);
 
   const chekBlockTitle = document.createElement('h2');
