@@ -27,33 +27,21 @@ javascript:
     };
   };
 
+  const makeCommentsList = (element, index) => {
+    element.id = index;
+    element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
 
-  commentContainersList
-    .filter(element => element.classList.contains('outdated-comment'))
-    .forEach(element => element.classList.remove('outdated-comment'));
+    let checkBlockItem = document.createElement('li');
+    let checkBlockLink = document.createElement('a');
 
-  const commentContainersToHighlight = commentContainersList
-    .filter(checkMentorHooray);
+    checkBlockList.appendChild(checkBlockItem);
+    checkBlockItem.appendChild(checkBlockLink);
+    checkBlockLink.innerHTML = element;
+    checkBlockLink.setAttribute('href', '#' + index);
+  }
 
-  // commentContainersToHighlight
-  //   .forEach(element => {
-  //     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
-  //     // let checkBlockItem = element;
-  //     // checkBlockItem.innerHTML = "<li>" + element + "</li>";
-  //     // console.log(checkBlockItem);
-  //     let checkBlockItem = document.createElement('li');
-  //     checkBlockList.appendChild(checkBlockItem);
-  //   });
-
-
-
-
-
-  // создам элемент 
   let commentToCheckBlock = document.createElement('div');
-  // добавляем ему класс
   commentToCheckBlock.classList.add('check-list');
-  // // добавляем ему немного свойств стилей
   commentToCheckBlock.style.position = 'fixed';
   commentToCheckBlock.style.width = '300px';
   commentToCheckBlock.style.minHeight = '150px';
@@ -66,41 +54,28 @@ javascript:
   commentToCheckBlock.style.boxSizing = 'border-box';
   commentToCheckBlock.style.padding = '10px';
 
-  // добавляем элемент в DOM
   let pageBody = document.body;
   pageBody.appendChild(commentToCheckBlock);
 
-  // добавляем заголовок
-  // создаем заголовок
   const chekBlockTitle = document.createElement('h2');
   commentToCheckBlock.appendChild(chekBlockTitle);
   chekBlockTitle.innerHTML = 'Список комментариев к проверке:';
-
-  // добавляем стили для заголовка
   chekBlockTitle.style.fontSize = '14px';
   chekBlockTitle.style.textAlign = 'center';
 
-  // создадим список
   const checkBlockList = document.createElement('ol');
   commentToCheckBlock.appendChild(checkBlockList);
   checkBlockList.classList.add('checkbox-list');
   checkBlockList.style.paddingLeft = '20px';
 
 
+  commentContainersList
+    .filter(element => element.classList.contains('outdated-comment'))
+    .forEach(element => element.classList.remove('outdated-comment'));
 
-  // добавляю подсветку и отправляю в список
+  const commentContainersToHighlight = commentContainersList
+    .filter(checkMentorHooray);
+
   commentContainersToHighlight
-    .forEach(function(element, index) {
-      element.id = index;
-      element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
-
-      let checkBlockItem = document.createElement('li');
-      let checkBlockLink = document.createElement('a');
-
-      checkBlockList.appendChild(checkBlockItem);
-      checkBlockItem.appendChild(checkBlockLink)
-      checkBlockLink.innerHTML = element;
-      checkBlockLink.setAttribute('href', '#' + index)
-    });
-
+    .forEach(makeCommentsList);
 })();
