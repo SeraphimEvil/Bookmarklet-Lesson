@@ -6,6 +6,12 @@ javascript:
   const MENTOR_NAME = 'aalexeev239';
   const HOORAY_REACTION = 'HOORAY';
 
+  let commentToCheckBlock;
+  let checkBlockTitle;
+  let checkBlockList;
+  let checkBlockItem;
+  let checkBlockLink;
+
   const commentContainers = document.querySelectorAll('.js-comment-container');
   const commentContainersList = Array.prototype.slice.call(commentContainers);
 
@@ -27,47 +33,67 @@ javascript:
     };
   };
 
-  const makeCommentsList = (element, index) => {
-    element.id = index;
+  const commentToHighlight = (element, index) => {
     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+    createCommentsBlockListElements(index);
+  };
 
-    let checkBlockItem = document.createElement('li');
-    let checkBlockLink = document.createElement('a');
+  function createCommentsBlock() {
+    commentToCheckBlock = document.createElement('div');
+    checkBlockTitle = document.createElement('h2');
+    checkBlockList = document.createElement('ol');
+
+    document.body.appendChild(commentToCheckBlock);
+    commentToCheckBlock.appendChild(checkBlockTitle);
+    commentToCheckBlock.appendChild(checkBlockList);
+
+    commentToCheckBlock.classList.add('check-list');
+    checkBlockList.classList.add('checkbox-list');
+
+    commentToCheckBlock.style.position = 'fixed';
+    commentToCheckBlock.style.width = '300px';
+    commentToCheckBlock.style.minHeight = '150px';
+    commentToCheckBlock.style.top = '60px';
+    commentToCheckBlock.style.right = '20px';
+    commentToCheckBlock.style.backgroundColor = '#fff';
+    commentToCheckBlock.style.zIndex = '999';
+    commentToCheckBlock.style.borderRadius = '5px';
+    commentToCheckBlock.style.border = '5px solid #333';
+    commentToCheckBlock.style.boxSizing = 'border-box';
+    commentToCheckBlock.style.padding = '10px';
+
+    checkBlockTitle.innerHTML = 'Список комментариев к проверке:';
+    checkBlockTitle.style.fontSize = '14px';
+    checkBlockTitle.style.textAlign = 'center';
+
+    checkBlockList.style.paddingLeft = '20px';
+  };
+
+  function createCommentsBlockListElements(index) {
+    checkBlockItem = document.createElement('li');
+    // checkBlockLink = document.createElement('a');
 
     checkBlockList.appendChild(checkBlockItem);
-    checkBlockItem.appendChild(checkBlockLink);
-    checkBlockLink.innerHTML = element;
-    checkBlockLink.setAttribute('href', '#' + index);
-  }
+    // checkBlockItem.appendChild(checkBlockLink);
 
-  let commentToCheckBlock = document.createElement('div');
-  commentToCheckBlock.classList.add('check-list');
-  commentToCheckBlock.style.position = 'fixed';
-  commentToCheckBlock.style.width = '300px';
-  commentToCheckBlock.style.minHeight = '150px';
-  commentToCheckBlock.style.top = '60px';
-  commentToCheckBlock.style.right = '20px';
-  commentToCheckBlock.style.backgroundColor = '#fff';
-  commentToCheckBlock.style.zIndex = '999';
-  commentToCheckBlock.style.borderRadius = '5px';
-  commentToCheckBlock.style.border = '5px solid #333';
-  commentToCheckBlock.style.boxSizing = 'border-box';
-  commentToCheckBlock.style.padding = '10px';
+    checkBlockItem.style.cursor = 'pointer';
 
-  let pageBody = document.body;
-  pageBody.appendChild(commentToCheckBlock);
+    checkBlockItem.innerHTML = index;
+    checkBlockItem.setAttribute('data-item', index);
 
-  const chekBlockTitle = document.createElement('h2');
-  commentToCheckBlock.appendChild(chekBlockTitle);
-  chekBlockTitle.innerHTML = 'Список комментариев к проверке:';
-  chekBlockTitle.style.fontSize = '14px';
-  chekBlockTitle.style.textAlign = 'center';
+    // console.log(index)
+    // console.log(index.pageYOffset);
 
-  let checkBlockList = document.createElement('ol');
-  commentToCheckBlock.appendChild(checkBlockList);
-  checkBlockList.classList.add('checkbox-list');
-  checkBlockList.style.paddingLeft = '20px';
+    checkBlockItem.addEventListener('click', function(event) {
+      console.log(index)
+      // console.log(this);
+      this.getAttribute('data-item');
+      // console.log(this.getAttribute('data-item'));
+    });
+  };
 
+
+  createCommentsBlock();
 
   commentContainersList
     .filter(element => element.classList.contains('outdated-comment'))
@@ -77,5 +103,5 @@ javascript:
     .filter(checkMentorHooray);
 
   commentContainersToHighlight
-    .forEach(makeCommentsList);
+    .forEach(commentToHighlight);
 })();
