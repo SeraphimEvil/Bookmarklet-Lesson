@@ -31,8 +31,8 @@ javascript:
     element.id = index;
     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
 
-    const checkBlockItem = document.createElement('li');
-    const checkBlockLink = document.createElement('a');
+    let checkBlockItem = document.createElement('li');
+    let checkBlockLink = document.createElement('a');
 
     checkBlockList.appendChild(checkBlockItem);
     checkBlockItem.appendChild(checkBlockLink);
@@ -54,7 +54,7 @@ javascript:
   commentToCheckBlock.style.boxSizing = 'border-box';
   commentToCheckBlock.style.padding = '10px';
 
-  const pageBody = document.body;
+  let pageBody = document.body;
   pageBody.appendChild(commentToCheckBlock);
 
   const chekBlockTitle = document.createElement('h2');
@@ -63,7 +63,7 @@ javascript:
   chekBlockTitle.style.fontSize = '14px';
   chekBlockTitle.style.textAlign = 'center';
 
-  const checkBlockList = document.createElement('ol');
+  let checkBlockList = document.createElement('ol');
   commentToCheckBlock.appendChild(checkBlockList);
   checkBlockList.classList.add('checkbox-list');
   checkBlockList.style.paddingLeft = '20px';
