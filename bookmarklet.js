@@ -76,10 +76,8 @@ javascript:
 
 
     checkBlockItem.addEventListener('click', function(event) {
-      console.log(index)
-      // console.log(this);
+      console.log(index);
       this.getAttribute('data-item');
-      // console.log(this.getAttribute('data-item'));
     });
   };
 
