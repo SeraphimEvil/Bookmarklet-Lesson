@@ -14,6 +14,24 @@ javascript:
   const commentContainers = document.querySelectorAll('.js-comment-container');
   const commentContainersList = Array.prototype.slice.call(commentContainers);
 
+  commentToCheckBlock.classList.add('check-list');
+  checkBlockList.classList.add('checkbox-list');
+
+  commentToCheckBlock.style.position = 'fixed';
+  commentToCheckBlock.style.width = '300px';
+  commentToCheckBlock.style.minHeight = '150px';
+  commentToCheckBlock.style.top = '60px';
+  commentToCheckBlock.style.right = '20px';
+  commentToCheckBlock.style.backgroundColor = '#fff';
+  commentToCheckBlock.style.zIndex = '999';
+  commentToCheckBlock.style.borderRadius = '5px';
+  commentToCheckBlock.style.border = '5px solid #333';
+  commentToCheckBlock.style.boxSizing = 'border-box';
+  commentToCheckBlock.style.padding = '10px';
+  checkBlockTitle.style.fontSize = '14px';
+  checkBlockTitle.style.textAlign = 'center';
+  checkBlockList.style.paddingLeft = '20px';
+
   const checkMentorHooray = (commentContainerElement) => {
     const lastCommentContainer = commentContainerElement.lastElementChild;
     if (lastCommentContainer.classList.contains('js-inline-comments-container')) {
@@ -42,26 +60,7 @@ javascript:
     commentToCheckBlock.appendChild(checkBlockTitle);
     commentToCheckBlock.appendChild(checkBlockList);
 
-    commentToCheckBlock.classList.add('check-list');
-    checkBlockList.classList.add('checkbox-list');
-
-    commentToCheckBlock.style.position = 'fixed';
-    commentToCheckBlock.style.width = '300px';
-    commentToCheckBlock.style.minHeight = '150px';
-    commentToCheckBlock.style.top = '60px';
-    commentToCheckBlock.style.right = '20px';
-    commentToCheckBlock.style.backgroundColor = '#fff';
-    commentToCheckBlock.style.zIndex = '999';
-    commentToCheckBlock.style.borderRadius = '5px';
-    commentToCheckBlock.style.border = '5px solid #333';
-    commentToCheckBlock.style.boxSizing = 'border-box';
-    commentToCheckBlock.style.padding = '10px';
-
     checkBlockTitle.innerHTML = 'Список комментариев к проверке:';
-    checkBlockTitle.style.fontSize = '14px';
-    checkBlockTitle.style.textAlign = 'center';
-
-    checkBlockList.style.paddingLeft = '20px';
   };
 
   const createCommentsBlockListElements =  (index) => {
