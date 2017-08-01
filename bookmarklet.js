@@ -6,11 +6,10 @@ javascript:
   const MENTOR_NAME = 'aalexeev239';
   const HOORAY_REACTION = 'HOORAY';
 
-  let commentToCheckBlock;
-  let checkBlockTitle;
-  let checkBlockList;
+  const commentToCheckBlock = document.createElement('div');
+  const checkBlockTitle = document.createElement('h2');
+  const checkBlockList = document.createElement('ul');
   let checkBlockItem;
-  let checkBlockLink;
 
   const commentContainers = document.querySelectorAll('.js-comment-container');
   const commentContainersList = Array.prototype.slice.call(commentContainers);
@@ -33,16 +32,12 @@ javascript:
     };
   };
 
-  const commentToHighlight = (element, index) => {
+  const makeTheLighting = (element, index) => {
     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
     createCommentsBlockListElements(index);
   };
 
-  function createCommentsBlock() {
-    commentToCheckBlock = document.createElement('div');
-    checkBlockTitle = document.createElement('h2');
-    checkBlockList = document.createElement('ol');
-
+  const createCommentsBlock = () => {
     document.body.appendChild(commentToCheckBlock);
     commentToCheckBlock.appendChild(checkBlockTitle);
     commentToCheckBlock.appendChild(checkBlockList);
@@ -69,20 +64,16 @@ javascript:
     checkBlockList.style.paddingLeft = '20px';
   };
 
-  function createCommentsBlockListElements(index) {
+  const createCommentsBlockListElements =  (index) => {
     checkBlockItem = document.createElement('li');
-    // checkBlockLink = document.createElement('a');
 
     checkBlockList.appendChild(checkBlockItem);
-    // checkBlockItem.appendChild(checkBlockLink);
 
     checkBlockItem.style.cursor = 'pointer';
 
     checkBlockItem.innerHTML = index;
     checkBlockItem.setAttribute('data-item', index);
 
-    // console.log(index)
-    // console.log(index.pageYOffset);
 
     checkBlockItem.addEventListener('click', function(event) {
       console.log(index)
@@ -103,5 +94,5 @@ javascript:
     .filter(checkMentorHooray);
 
   commentContainersToHighlight
-    .forEach(commentToHighlight);
+    .forEach(makeTheLighting);
 })();
