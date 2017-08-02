@@ -52,7 +52,7 @@ javascript:
 
   const makeTheLighting = (element, index) => {
     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
-    createCommentsBlockListElements(index);
+    createCommentsBlockListElements(element, index);
   };
 
   const createCommentsBlock = () => {
@@ -63,7 +63,7 @@ javascript:
     checkBlockTitle.innerHTML = 'Список комментариев к проверке:';
   };
 
-  const createCommentsBlockListElements =  (index) => {
+  const createCommentsBlockListElements =  (element, index) => {
     checkBlockItem = document.createElement('li');
 
     checkBlockList.appendChild(checkBlockItem);
@@ -73,12 +73,28 @@ javascript:
     checkBlockItem.innerHTML = index;
     checkBlockItem.setAttribute('data-item', index);
 
+    // let commentItemPosition = element.offsetTop;
+    const commentItemPosition = getOffsetTop(element);
+    
+    console.log(element)
+    console.log(commentItemPosition)
 
     checkBlockItem.addEventListener('click', function(event) {
-      console.log(index);
-      this.getAttribute('data-item');
+      window.scrollTo(0, commentItemPosition);
     });
   };
+
+  function getOffsetTop( elem ) {
+    let offsetTop = 0;
+
+    do {
+      if ( !isNaN( elem.offsetTop ) )
+      {
+          offsetTop += elem.offsetTop;
+      }
+    } while( elem = elem.offsetParent );
+    return offsetTop;
+  }
 
 
   createCommentsBlock();
