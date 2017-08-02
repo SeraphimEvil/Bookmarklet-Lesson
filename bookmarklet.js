@@ -73,8 +73,8 @@ javascript:
     checkBlockItem.innerHTML = index;
     checkBlockItem.setAttribute('data-item', index);
 
-    // let commentItemPosition = element.offsetParent.offsetTop;
-    const commentItemPosition = getOffsetTop(element);
+    let commentItemPosition = element.offsetParent.offsetTop + element.offsetTop + 200;
+    // const commentItemPosition = getOffsetTop(element);
 
     console.log(element)
     console.log(commentItemPosition)
@@ -84,17 +84,17 @@ javascript:
     });
   };
 
-  function getOffsetTop( elem ) {
-    let offsetTop = 0;
+  // function getOffsetTop( elem ) {
+  //   let offsetTop = 0;
 
-    do {
-      if ( !isNaN( elem.offsetTop ) )
-      {
-          offsetTop += elem.offsetTop;
-      }
-    } while( elem = elem.offsetParent );
-    return offsetTop;
-  }
+  //   do {
+  //     if ( !isNaN( elem.offsetTop ) )
+  //     {
+  //         offsetTop += elem.offsetTop;
+  //     }
+  //   } while( elem = elem.offsetParent );
+  //   return offsetTop;
+  // };
 
 
   createCommentsBlock();
