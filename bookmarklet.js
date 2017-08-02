@@ -73,9 +73,9 @@ javascript:
     checkBlockItem.innerHTML = index;
     checkBlockItem.setAttribute('data-item', index);
 
-    // let commentItemPosition = element.offsetTop;
+    // let commentItemPosition = element.offsetParent.offsetTop;
     const commentItemPosition = getOffsetTop(element);
-    
+
     console.log(element)
     console.log(commentItemPosition)
 
