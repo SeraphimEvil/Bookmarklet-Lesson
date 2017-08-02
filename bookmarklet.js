@@ -71,15 +71,16 @@ javascript:
     checkBlockItem.style.cursor = 'pointer';
 
     checkBlockItem.innerHTML = index;
-    checkBlockItem.setAttribute('data-item', index);
+    // checkBlockItem.setAttribute('data-item', index);
 
-    let commentItemPosition = element.offsetParent.offsetTop + element.offsetTop + 200;
+    const commentItemPosition = element.offsetParent.offsetTop + element.offsetTop + 200;
     // const commentItemPosition = getOffsetTop(element);
 
-    console.log(element)
-    console.log(commentItemPosition)
+    // console.log(element)
+    // console.log(commentItemPosition)
 
     checkBlockItem.addEventListener('click', function(event) {
+      this.style.backgroundColor = '#f0f0f0';
       window.scrollTo(0, commentItemPosition);
     });
   };
