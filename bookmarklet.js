@@ -71,16 +71,18 @@ javascript:
     checkBlockItem.style.cursor = 'pointer';
 
     checkBlockItem.innerHTML = index;
-    // checkBlockItem.setAttribute('data-item', index);
 
     const commentItemPosition = element.offsetParent.offsetTop + element.offsetTop + 200;
     // const commentItemPosition = getOffsetTop(element);
 
-    // console.log(element)
-    // console.log(commentItemPosition)
-
     checkBlockItem.addEventListener('click', function(event) {
+      let scrollStart = window.scrollY;
+      let scrollEnd = commentItemPosition;
+      console.log('скроллинг начался отсюда: ' + scrollStart);
+      console.log('скроллинг законился тут: ' + scrollEnd);
+
       this.style.backgroundColor = '#f0f0f0';
+
       window.scrollTo(0, commentItemPosition);
     });
   };
