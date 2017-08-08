@@ -2,7 +2,6 @@ javascript:
 (function() {
   'use strict';
 
-  const STUDENT_NAME = 'SeraphimEvil';
   const MENTOR_NAME = 'aalexeev239';
   const HOORAY_REACTION = 'HOORAY';
 
@@ -73,7 +72,6 @@ javascript:
     checkBlockItem.innerHTML = index;
 
     const commentItemPosition = element.offsetParent.offsetTop + element.offsetTop + 200;
-    // const commentItemPosition = getOffsetTop(element);
 
     checkBlockItem.addEventListener('click', function(event) {
       let scrollStart = window.scrollY;
@@ -86,18 +84,6 @@ javascript:
       window.scrollTo(0, commentItemPosition);
     });
   };
-
-  // function getOffsetTop( elem ) {
-  //   let offsetTop = 0;
-
-  //   do {
-  //     if ( !isNaN( elem.offsetTop ) )
-  //     {
-  //         offsetTop += elem.offsetTop;
-  //     }
-  //   } while( elem = elem.offsetParent );
-  //   return offsetTop;
-  // };
 
 
   createCommentsBlock();
