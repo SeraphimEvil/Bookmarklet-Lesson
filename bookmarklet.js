@@ -6,30 +6,27 @@ javascript:
   const HOORAY_REACTION = 'HOORAY';
 
   const commentToCheckBlock = document.createElement('div');
-  const checkBlockTitle = document.createElement('h2');
+  const checkBlockTitle = document.createElement('h5');
   const checkBlockList = document.createElement('ul');
   let checkBlockItem;
 
   const commentContainers = document.querySelectorAll('.js-comment-container');
   const commentContainersList = Array.prototype.slice.call(commentContainers);
 
+  var sheet = (function() {
+    var style = document.createElement('style');
+    document.head.appendChild(style);
+
+    return style.sheet;
+  })();
+
+  sheet.addRule('.check-list', 'position: fixed; width: 200px; top: 60px; right: 20px; background-color: #fff; z-index: 999;', 0);
+  sheet.addRule('.check-list', 'min-height: 150px; border: 5px solid #333; border-radius: 5px; box-sizing: border-box; padding: 10px 20px;', 0);
+  sheet.addRule('.check-list li', 'cursor: pointer; list-style: none; margin: 10px 0;', 0);
+  sheet.addRule('.check-list li.active', 'background-color: #f0f0f0;', 0);
+
   commentToCheckBlock.classList.add('check-list');
   checkBlockList.classList.add('checkbox-list');
-
-  commentToCheckBlock.style.position = 'fixed';
-  commentToCheckBlock.style.width = '300px';
-  commentToCheckBlock.style.minHeight = '150px';
-  commentToCheckBlock.style.top = '60px';
-  commentToCheckBlock.style.right = '20px';
-  commentToCheckBlock.style.backgroundColor = '#fff';
-  commentToCheckBlock.style.zIndex = '999';
-  commentToCheckBlock.style.borderRadius = '5px';
-  commentToCheckBlock.style.border = '5px solid #333';
-  commentToCheckBlock.style.boxSizing = 'border-box';
-  commentToCheckBlock.style.padding = '10px';
-  checkBlockTitle.style.fontSize = '14px';
-  checkBlockTitle.style.textAlign = 'center';
-  checkBlockList.style.paddingLeft = '20px';
 
   const checkMentorHooray = (commentContainerElement) => {
     const lastCommentContainer = commentContainerElement.lastElementChild;
@@ -51,7 +48,7 @@ javascript:
 
   const makeTheLighting = (element, index) => {
     element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
-    createCommentsBlockListElements(element, index);
+    createCommentsBlockListElements(element, 'Comment #' + (index + 1));
   };
 
   const createCommentsBlock = () => {
@@ -59,7 +56,7 @@ javascript:
     commentToCheckBlock.appendChild(checkBlockTitle);
     commentToCheckBlock.appendChild(checkBlockList);
 
-    checkBlockTitle.innerHTML = 'Список комментариев к проверке:';
+    checkBlockTitle.innerHTML = 'Check me:';
   };
 
   const createCommentsBlockListElements =  (element, index) => {
@@ -67,24 +64,18 @@ javascript:
 
     checkBlockList.appendChild(checkBlockItem);
 
-    checkBlockItem.style.cursor = 'pointer';
-
     checkBlockItem.innerHTML = index;
 
-    const commentItemPosition = element.offsetParent.offsetTop + element.offsetTop + 200;
+    const commentItemPosition = element.offsetParent.offsetParent.offsetTop +
+      element.offsetParent.offsetTop +
+      element.offsetTop +
+      (window.innerHeight / 4);
 
     checkBlockItem.addEventListener('click', function(event) {
-      let scrollStart = window.scrollY;
-      let scrollEnd = commentItemPosition;
-      console.log('скроллинг начался отсюда: ' + scrollStart);
-      console.log('скроллинг законился тут: ' + scrollEnd);
-
-      this.style.backgroundColor = '#f0f0f0';
-
+      this.classList.add('active');
       window.scrollTo(0, commentItemPosition);
     });
   };
-
 
   createCommentsBlock();
 
@@ -92,7 +83,7 @@ javascript:
     .filter(element => element.classList.contains('outdated-comment'))
     .forEach(element => element.classList.remove('outdated-comment'));
 
-  const commentContainersToHighlight = commentContainersList
+  let commentContainersToHighlight = commentContainersList
     .filter(checkMentorHooray);
 
   commentContainersToHighlight
