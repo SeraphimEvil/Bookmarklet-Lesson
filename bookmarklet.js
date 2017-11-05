@@ -3,7 +3,7 @@ javascript:
   'use strict';
 
   const MENTOR_NAME = 'aalexeev239';
-  const HOORAY_REACTION = 'HOORAY';
+  const TADA_REACTION = 'tada';
 
   const commentToCheckBlock = document.createElement('div');
   const checkBlockTitle = document.createElement('h5');
@@ -33,7 +33,7 @@ javascript:
     if (lastCommentContainer.classList.contains('js-inline-comments-container')) {
       const lastCommentBlock = lastCommentContainer.querySelector('.js-comments-holder');
       const lastComment = lastCommentBlock.lastElementChild;
-      const hoorayEmotionElement = lastComment.querySelector('.js-reactions-container g-emoji[alias="tada"]');
+      const hoorayEmotionElement = lastComment.querySelector('.js-reactions-container g-emoji[alias="' + TADA_REACTION + '"]');
 
       if (!hoorayEmotionElement) {
         return true;
