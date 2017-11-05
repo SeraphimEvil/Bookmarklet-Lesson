@@ -2,7 +2,7 @@ javascript:
 (function() {
   'use strict';
 
-  const MENTOR_NAME = 'aalexeev239';
+  const MENTOR_NAME = 'MammaSonnim';
   const TADA_REACTION = 'tada';
 
   const commentToCheckBlock = document.createElement('div');
@@ -20,7 +20,7 @@ javascript:
     return style.sheet;
   })();
 
-  sheet.addRule('.check-list', 'position: fixed; width: 200px; top: 60px; right: 20px; background-color: #fff; z-index: 999;', 0);
+  sheet.addRule('.check-list', 'position: fixed; width: 200px; top: 60px; right: 20px; background-color: #fff; z-index: 999; max-height: calc(100vh - 120px); overflow: auto;', 0);
   sheet.addRule('.check-list', 'min-height: 150px; border: 5px solid #333; border-radius: 5px; box-sizing: border-box; padding: 10px 20px;', 0);
   sheet.addRule('.check-list li', 'cursor: pointer; list-style: none; margin: 10px 0;', 0);
   sheet.addRule('.check-list li.active', 'background-color: #f0f0f0;', 0);
